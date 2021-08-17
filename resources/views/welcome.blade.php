@@ -157,9 +157,10 @@
                             </div>
                             <div style="margin-left:10px">
                                 <label>Finger Print</label>
-                                <button>Add now</button>
+                                <button type="button" class="capture">Add now</button>
                                 <img class="photo" name="p1_finger" src="{{asset('imgs/noimg.jpg')}}"> 
-
+                                <div class="box" id="box1"></div>
+                                <div class="box" id="box2"></div>
                                 <input type="hidden" name="fingerprint">
                             </div>
                         </div>
@@ -283,6 +284,7 @@
         
         <script src="{{asset('js/mask.js')}}" data-autoinit="true"></script>
         <script src="{{asset('js/webcam.min.js')}}"></script>
+        <script src="{{asset('js/fingerprint.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}" ></script>
         
 
@@ -321,7 +323,89 @@
             }
 
         </script>
-        
+        <script type="text/javascript">
+         var lastClickedCaptureButtonId;
+
+         $(document).ready(function(){
+
+                 $(this).on('click','.capture',function() {
+
+                         $(".result").html('');
+                         lastClickedCaptureButtonId = $(this).attr('for');
+                         $("#"+lastClickedCaptureButtonId ).css("background-image","");
+                         $("#"+lastClickedCaptureButtonId ).attr("tmpl","");
+                         var apiKey = "w6TCtCYTw4ZEdXTCtsKWwrbDhndUZFV3w5ZHwrZFw6RGJGNnwpUWRzPCh8OEU0d2w5QWFcK2woTDtDRVFDUkwpMUwpdDwrRFw4R0wqXCpRXChsKGJ2TCh1NDwrbCtiTChcKGwpMXdsOmJCTDpMKGZjXCh1VDNsO0A1RmwrITMxfDtsOUZnfCg8KXF3XCpMKXwqZHw5bClsOmV8K0wpfCllbCg8KHdsO2RxYVw5bDhAM1NEXDtlYlVlPCp8OkEybClWQzw5bCtldWE8O0w6ZjRMKywqXCpFUzB8KFZsOWNCTClUXCsmTClXXClQdWwoMUQ3NjRRYFFMKnNwfClcKGNXYzwpQVwrR3F8KUwqdVNsKlwofCk8KUMzXDshdFwoQzFMKTZDfClkZzwpdFJ0UmwrZmw7QkVxVGRxVjZxYlwodWdcKUNMOEwrLClMKFwrLDhGQjw7bCpmdXRsK2w5QkwrZnwqTCg8KVZsKmE8KkRsOUw6RGMxNFw7IVRcKVQwXDhgPCl8KTwoNmZ8KVZ1bCp8KDwoMmdhYnVmUFw6YmRcKUdcKFQ2QjwqUkw5bCgyPDtsKGwoQlw5bCtldXwpTDtMKyJEfDlsKyNER0dGPCsncVwofDtsKFE8Oyw5bCpmN3w7JVNAcmd3dXR1TDpjMnw4TDtkXChhRkwrLDlEbClsKEV8KWUzM0w7LChiQHw4R0c8KWdlNXwqbCtjbCpsOyFDPClXQzA3bChXZTwocjw6bCgyd2w4YWw6RGwqd1VcKGZsKWR8OWJDXDlGfClsKywqQmwodnwqUVRmcmNXYzw7JHMxckw5YkwoVkVhdjRMKnB2VnwoYnd8KTZ1dkwoRXMxUFVRTDtMKTRsK2w4YDw5QWwqdlwqbClMKTNRXChEfDsmbDtFYDw5PDpMKUE3bDpHZmw7IWw7ZmwpZmwqdFR8KTY1U0w6R3w5PDk1MEQUFZVQ==";
+
+                         var returnPNGImage = true; // returns PNG image along with the template. Setting it to false, returns only template
+
+                         capture(apiKey, returnPNGImage);
+
+                 });
+
+                 $(this).on('click','.compare',function() {
+
+                         $(".result").html('');
+                         var temlate1 = $("#box1").attr('tmpl');
+                         var temlate2 = $("#box2").attr('tmpl');
+                         var apiKey = $("#apikey").val();
+                         compare(apiKey,temlate1,temlate2);
+
+                 });
+
+                 $(this).on('click','.get-servicetagid',function() {
+                         $(".result").html('');
+                         getServiceTagId();
+                 });
+
+                 });
+
+                 function onSuccess(data)
+                 {
+                 console.log(data);
+                         var plainData = data;
+                         //write the program to decrypt if security key is set in API monitor for the scanner
+
+                         var successData = getScannerSuccessData(plainData);
+
+                         if(successData.operation =="Capture")
+                         {
+
+                         var pngImageContent = "data:image/png;base64," + successData.image;
+
+                                 $("#"+lastClickedCaptureButtonId ).css("background-image", "url('"+ pngImageContent + "')");
+                                 $("#"+lastClickedCaptureButtonId ).attr("tmpl",successData.template);
+								 if(lastClickedCaptureButtonId == 'box1')
+								 {
+									$('#f1score').html("Quality score :"+successData.qualityScore);
+								 }
+
+								 if(lastClickedCaptureButtonId == 'box2')
+								 {
+									$('#f2score').html("Quality score :"+successData.qualityScore);
+								 }
+                         }
+                         else if(successData.operation =="Compare")
+                         {
+                                 $("#score").text("Score: "+successData.matchScore);
+                         }
+                         else if(successData.operation == "GetServiceTagId")
+                         {
+                                 $("#servicetagid").html("servicetagid: "+successData.serviceTagId);
+                         }
+
+                 }
+
+                 function onFailure(data)
+                 {
+                         var failureData = getScannerFailureData(data);
+                         //console.log(failureData.opeartion);
+
+                         $("#error-text").html("Error </br> ["+failureData.errorCode+"] "+failureData.errorString);
+						 $('f1score').html('');
+						 $('f2score').html('');
+
+                 }
+      </script>
        
 
     <!-- Modal -->
