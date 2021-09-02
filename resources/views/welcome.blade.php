@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="{{asset('js/jquery.min.js')}}" ></script>
+        
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
         
         <title>Anandi Wastu</title>
@@ -152,15 +152,14 @@
                             <div style="margin-right:10px">
                                 <label>Photo</label>
                                 <button type="button" data-toggle="modal" data-target="#exampleModal" onClick="startWebCam()">Add now</button>
-                                <img class="photo" id="p1_photo" src="{{asset('imgs/noimg.jpg')}}"> 
-                                <input type="hidden" name="photo">
+                                <img class="photo" name="p1_photo" id="p1_photo" src="{{asset('imgs/noimg.jpg')}}"> 
+                                <input type="hidden" name="photo" id="photo">
                             </div>
                             <div style="margin-left:10px">
                                 <label>Finger Print</label>
                                 <button type="button" class="capture">Add now</button>
-                                <img class="photo" name="p1_finger" src="{{asset('imgs/noimg.jpg')}}"> 
-                                <div class="box" id="box1"></div>
-                                <div class="box" id="box2"></div>
+                                <img class="photo" name="p1_finger" id="p1_finger" src="{{asset('imgs/noimg.jpg')}}"> 
+                               
                                 <input type="hidden" name="fingerprint">
                             </div>
                         </div>
@@ -170,48 +169,12 @@
                     <div>
                         <h3>Co-Customer 1 details</h3>
                         <label>Name</label>
-                        <input name="name1">
-                        <br>
-                        <div class="mrow">
-                            <div style="margin-right:10px">
-                                <label>Date Of Birth</label>
-                                <input name="dob1">
-                            </div>
-                            <div style="margin-left:10px">
-                                <label>Time Of Birth</label>
-                                <input name="tob1" placeholder="HH:MM AM/PM" >
-                            </div>
-                        </div>
-                        <br>
-                        <div class="mrow">
-                            <div style="margin-right:10px">
-                                <label>Mobile</label>
-                                <input name="mobile1">
-                            </div>
-                            <div style="margin-left:10px">
-                                <label>Email</label>
-                                <input name="email1">
-                            </div>
-                        </div>
-                        <br>
-                        <div >
-                            <label>Address</label>
-                            <textarea name="address1" rows="5"></textarea>
-                        </div>
-                        <br>
-                        
-                    </div>
-                    <hr>
-
-                    <div>
-                        <h3>Co-Customer 2 details</h3>
-                        <label>Name</label>
                         <input name="name2">
                         <br>
                         <div class="mrow">
                             <div style="margin-right:10px">
                                 <label>Date Of Birth</label>
-                                <input name="dob2" type="date">
+                                <input name="dob2">
                             </div>
                             <div style="margin-left:10px">
                                 <label>Time Of Birth</label>
@@ -240,14 +203,14 @@
                     <hr>
 
                     <div>
-                        <h3>Co-Customer 3 details</h3>
+                        <h3>Co-Customer 2 details</h3>
                         <label>Name</label>
                         <input name="name3">
                         <br>
                         <div class="mrow">
                             <div style="margin-right:10px">
                                 <label>Date Of Birth</label>
-                                <input name="dob3">
+                                <input name="dob3" type="date">
                             </div>
                             <div style="margin-left:10px">
                                 <label>Time Of Birth</label>
@@ -274,6 +237,42 @@
                         
                     </div>
                     <hr>
+
+                    <div>
+                        <h3>Co-Customer 3 details</h3>
+                        <label>Name</label>
+                        <input name="name4">
+                        <br>
+                        <div class="mrow">
+                            <div style="margin-right:10px">
+                                <label>Date Of Birth</label>
+                                <input name="dob4">
+                            </div>
+                            <div style="margin-left:10px">
+                                <label>Time Of Birth</label>
+                                <input name="tob4" placeholder="HH:MM AM/PM" >
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mrow">
+                            <div style="margin-right:10px">
+                                <label>Mobile</label>
+                                <input name="mobile4">
+                            </div>
+                            <div style="margin-left:10px">
+                                <label>Email</label>
+                                <input name="email4">
+                            </div>
+                        </div>
+                        <br>
+                        <div >
+                            <label>Address</label>
+                            <textarea name="address4" rows="5"></textarea>
+                        </div>
+                        <br>
+                        
+                    </div>
+                    <hr>
                     <div class="text-center">
                         <button class="btn btn-primary">Submit & Generate form</button>
                     </div>
@@ -281,7 +280,7 @@
                 </form>
             </div>
         </div>
-        
+        <script src="{{asset('js/jquery.min.js')}}" ></script>
         <script src="{{asset('js/mask.js')}}" data-autoinit="true"></script>
         <script src="{{asset('js/webcam.min.js')}}"></script>
         <script src="{{asset('js/fingerprint.js')}}"></script>
@@ -297,7 +296,7 @@
                     $('#camblock').hide();
                     $('#camblockret').show();
                     img_data=data_uri;
-                    $('#p1_photo').value(img_data);
+                    document.getElementById("p1_photo").value=img_data;
                     // display results in page
                     document.getElementById('results').innerHTML = 
                         '<h2>Captured image</h2>' + 
@@ -320,6 +319,8 @@
 
             function saveImg() {
                 $("#p1_photo").attr("src",img_data);
+                $("#photo")=img_data;
+
             }
 
         </script>
@@ -334,10 +335,10 @@
                          lastClickedCaptureButtonId = $(this).attr('for');
                          $("#"+lastClickedCaptureButtonId ).css("background-image","");
                          $("#"+lastClickedCaptureButtonId ).attr("tmpl","");
-                         var apiKey = "w6TCtCYTw4ZEdXTCtsKWwrbDhndUZFV3w5ZHwrZFw6RGJGNnwpUWRzPCh8OEU0d2w5QWFcK2woTDtDRVFDUkwpMUwpdDwrRFw4R0wqXCpRXChsKGJ2TCh1NDwrbCtiTChcKGwpMXdsOmJCTDpMKGZjXCh1VDNsO0A1RmwrITMxfDtsOUZnfCg8KXF3XCpMKXwqZHw5bClsOmV8K0wpfCllbCg8KHdsO2RxYVw5bDhAM1NEXDtlYlVlPCp8OkEybClWQzw5bCtldWE8O0w6ZjRMKywqXCpFUzB8KFZsOWNCTClUXCsmTClXXClQdWwoMUQ3NjRRYFFMKnNwfClcKGNXYzwpQVwrR3F8KUwqdVNsKlwofCk8KUMzXDshdFwoQzFMKTZDfClkZzwpdFJ0UmwrZmw7QkVxVGRxVjZxYlwodWdcKUNMOEwrLClMKFwrLDhGQjw7bCpmdXRsK2w5QkwrZnwqTCg8KVZsKmE8KkRsOUw6RGMxNFw7IVRcKVQwXDhgPCl8KTwoNmZ8KVZ1bCp8KDwoMmdhYnVmUFw6YmRcKUdcKFQ2QjwqUkw5bCgyPDtsKGwoQlw5bCtldXwpTDtMKyJEfDlsKyNER0dGPCsncVwofDtsKFE8Oyw5bCpmN3w7JVNAcmd3dXR1TDpjMnw4TDtkXChhRkwrLDlEbClsKEV8KWUzM0w7LChiQHw4R0c8KWdlNXwqbCtjbCpsOyFDPClXQzA3bChXZTwocjw6bCgyd2w4YWw6RGwqd1VcKGZsKWR8OWJDXDlGfClsKywqQmwodnwqUVRmcmNXYzw7JHMxckw5YkwoVkVhdjRMKnB2VnwoYnd8KTZ1dkwoRXMxUFVRTDtMKTRsK2w4YDw5QWwqdlwqbClMKTNRXChEfDsmbDtFYDw5PDpMKUE3bDpHZmw7IWw7ZmwpZmwqdFR8KTY1U0w6R3w5PDk1MEQUFZVQ==";
+                         var apiKey = "wrFqwrJywrHDilPDi3vCg8KiU8OSCsKjwqJKEsOBK8KZY8KCGsKTwrpCwonCoVsiwoPDi8K7wqMTwoPDi1pqI8KRwporwoJ6SzNzwrEywptTOsOSw5LCikNDwpMyw4PCqcKhW1sSw4JDw4nCiztzEhJyQzPCmsODwqrCoRt6woEqM1nCicKZwot7ajPCu8OBw4vCi8K6UsOLU8Kja0tzwqtaw4tLK8OBw4M7e8KjC8KKa2LCgcKaGsKieyvCkivCqcOTcsKJE8OKMsKZa1vCqyvCiXpzwrEiWcOSUsKqwpnCg8OCM2saEsOKwqJZMsOKwrrDisKDK8OBCsKhwrnCscKiC8KCCsOTwpvCg8OKQ8KaO8KjwpHCqcKawrnCoVvCgcOTWXM7asOLwpIqwrISw4LCqcKqwoLCicOBQ8K6wprCiQvCs8ODCll5wpLCmiPDkzt6GgozwonDgsKySmLDk8KzwoHCuUN7woHCollbwoLCmmoKamoTwpILWsKqwqPDgQo6e8OKwpnCoTtrWcOBwrNawqPCm1nCq8KJEsKLwop5eUvDiTMyw4LCkToaKxPCqlJiOsKKwrs6wprDgXPDg0NZwoLCqmPCgcK7wonCmTPCssKCw4kSwpPCunvCgVJrwrlLwonCgcK6wpJTecK6akp5IsKJwrHCqcKqWSPCo2pDw5IzO8OCw5JbOhPDkwtLKiM6C8KawrHCoTvCucKhOsKRE8KhSmrDihPCk8K5EiI6QzPCusKSOsOBwrPDisOSwrvDiiPCi8KzwrMTOno6wpPDk8KBw4JZKgrDgsKhw4PCkUorwrFicxtiWSo6W8KbE8KrWiJrwrF6wpLDi8KCw4EiIzsTM8KaEisic0ILM8OLwqsawrJ7wonCmXLDksKaMllawpHDijJKw4tZYsKhW8KrQno6IlPCusKiWmPCisOBwpt6wrNCQnsbC3rDk1NTw5PCqWoiM1obC0tjwoJSeipZwop7wrLCgTp5wqEjwpnCisKqwpkqesKzwqPCs8KywqFia2tbw5PCscKrO8OBwrHCshPCoQvDgcKCE8K5Q8KSwrnCo8KBIsKJCiLCs8OCw5JSIyI6wpvCicOKw4vCgsKqWxLCuTPCmcOTc8KjckrCiTtyOzN5C3szSzPDk8KiwqPDicKxwqoacsK7w6nDqcKrBUFBWTQ=";
 
                          var returnPNGImage = true; // returns PNG image along with the template. Setting it to false, returns only template
-
+                         alert("Keep your finger on scanner");
                          capture(apiKey, returnPNGImage);
 
                  });
@@ -361,28 +362,30 @@
 
                  function onSuccess(data)
                  {
-                 console.log(data);
+                 // console.log(data);
                          var plainData = data;
                          //write the program to decrypt if security key is set in API monitor for the scanner
 
                          var successData = getScannerSuccessData(plainData);
-
+                         console.log(successData);
                          if(successData.operation =="Capture")
                          {
+                                alert("Finger Print scanned successfully");
+                                var pngImageContent = "data:image/png;base64," + successData.image;
+                                 //console.log(pngImageContent);
+                                document.getElementById("p1_finger").src=pngImageContent;
+                                console.log(document.getElementById("p1_finger").src);
+         //                         $("#"+lastClickedCaptureButtonId ).css("background-image", "url('"+ pngImageContent + "')");
+         //                         $("#"+lastClickedCaptureButtonId ).attr("tmpl",successData.template);
+								 // if(lastClickedCaptureButtonId == 'box1')
+								 // {
+									// $('#f1score').html("Quality score :"+successData.qualityScore);
+								 // }
 
-                         var pngImageContent = "data:image/png;base64," + successData.image;
-
-                                 $("#"+lastClickedCaptureButtonId ).css("background-image", "url('"+ pngImageContent + "')");
-                                 $("#"+lastClickedCaptureButtonId ).attr("tmpl",successData.template);
-								 if(lastClickedCaptureButtonId == 'box1')
-								 {
-									$('#f1score').html("Quality score :"+successData.qualityScore);
-								 }
-
-								 if(lastClickedCaptureButtonId == 'box2')
-								 {
-									$('#f2score').html("Quality score :"+successData.qualityScore);
-								 }
+								 // if(lastClickedCaptureButtonId == 'box2')
+								 // {
+									// $('#f2score').html("Quality score :"+successData.qualityScore);
+								 // }
                          }
                          else if(successData.operation =="Compare")
                          {
@@ -437,8 +440,5 @@
             </div>
         </div>
     </div>
-        
-        
-
     </body>
 </html>

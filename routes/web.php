@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/add', function () {
     return view('welcome');
 });
 
 Route::post('/submitClient', 'App\Http\Controllers\HomeController@submitClient');
+
+Route::get('/',  'App\Http\Controllers\HomeController@getBasic');
+Route::get('/getBasicData',  'App\Http\Controllers\HomeController@getBasicData');
+Route::get('/getPdf/{id}',  'App\Http\Controllers\HomeController@getPdf');
+
 
