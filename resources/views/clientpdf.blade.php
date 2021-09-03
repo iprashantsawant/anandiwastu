@@ -1,6 +1,7 @@
 <html>
+
 <header>
-    
+        <meta charset="utf-8">
         <style>
        @font-face {
             font-family: 'Mangal';

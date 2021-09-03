@@ -349,7 +349,7 @@
             function saveImg() {
                 $("#p1_photo").attr("src",img_data);
                 document.getElementById("photo").value=img_data;
-                document.getElementById("fingerprint").value=img_data;
+                // document.getElementById("fingerprint").value=img_data;
             }
 
         </script>
@@ -403,7 +403,11 @@
                                 var pngImageContent = "data:image/png;base64," + successData.image;
                                  //console.log(pngImageContent);
                                 document.getElementById("p1_finger").src=pngImageContent;
+                                document.getElementById("fingerprint").src=pngImageContent;
+
                                 console.log(document.getElementById("p1_finger").src);
+                                document.getElementById("fingerprint").value=pngImageContent;
+
          //                         $("#"+lastClickedCaptureButtonId ).css("background-image", "url('"+ pngImageContent + "')");
          //                         $("#"+lastClickedCaptureButtonId ).attr("tmpl",successData.template);
 								 // if(lastClickedCaptureButtonId == 'box1')
