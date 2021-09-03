@@ -11,10 +11,10 @@ class AvRegistrations extends Model
     use HasFactory;
     protected $table = "av_registrations";
     protected $primary_key="id";
-    protected $fillable=['created_at', 'updated_at', 'name', 'dob', 'tob', 'mobile', 'email', 'address', 'photo', 'fingerprint', 'name2', 'dob2', 'tob2', 'mobile2', 'email2', 'address2', 'name3', 'dob3', 'tob3', 'mobile3', 'email3', 'address3', 'name4', 'dob4', 'tob4', 'mobile4', 'email4', 'address4'];
+    protected $fillable=['created_at', 'updated_at', 'name', 'dob', 'tob', 'pob', 'mobile', 'email', 'address', 'photo', 'fingerprint', 'name2', 'dob2', 'tob2','pob2', 'mobile2', 'email2', 'address2', 'name3', 'dob3', 'tob3', 'pob3', 'mobile3', 'email3', 'address3', 'name4', 'dob4', 'tob4', 'pob4', 'mobile4', 'email4', 'address4'];
 
     public static function getListData(){
-        $data = AvRegistrations::select(['id','created_at', 'updated_at', 'name', 'dob', 'tob', 'mobile', 'email', 'address', 'photo', 'fingerprint'])->orderBy('id','desc');
+        $data = AvRegistrations::select(['id','created_at', 'updated_at', 'name', 'dob', 'tob','pob', 'mobile', 'email', 'address', 'photo', 'fingerprint'])->orderBy('id','desc');
        
         return Datatables::of($data)
                 ->addIndexColumn()

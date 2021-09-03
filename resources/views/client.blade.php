@@ -16,6 +16,17 @@
 
         <title>Anandi Wastu</title>
         <style>
+            @font-face {
+            font-family: 'Mangal', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            src: url('fonts/Mangal.ttf') format('truetype'); 
+        }
+        body,p {
+            font-family: 'Mangal', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+        }
             .logo{
                 height:60px;
                 margin:4px 8px 4px 8px;
@@ -135,6 +146,7 @@
                                     <th>Name</th>
                                     <th>DOB</th>
                                     <th>Time</th>
+                                    <th>Place</th>
                                     <th>Address</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
@@ -159,6 +171,7 @@
                         {data: 'name', name: 'name'},
                         {data: 'dob', name: 'dob'},
                         {data: 'tob', name: 'tob'},
+                        {data: 'pob', name: 'pob'},
                         {data: 'address', name: 'address'},
                         {data: 'mobile', name: 'mobile'},
                         {data: 'email', name: 'email'},

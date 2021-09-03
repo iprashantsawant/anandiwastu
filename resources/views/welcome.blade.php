@@ -118,49 +118,55 @@
                     {{csrf_field()}}
                     <div>
                         <h3>Customer details</h3>
-                        <label>Name</label>
-                        <input name="name">
+                        <label>Name *</label>
+                        <input name="name" placeholder="Customer name" required>
                         <br>
                         <div class="mrow">
                             <div style="margin-right:10px">
-                                <label>Date Of Birth</label>
-                                <input name="dob" type="date">
+                                <label>Date Of Birth *</label>
+                                <input name="dob" type="date" placeholder="DOB" required>
                             </div>
                             <div style="margin-left:10px">
-                                <label>Time Of Birth</label>
-                                <input name="tob" id="tob" placeholder="HH:MM AM/PM" >
+                                <label>Time Of Birth *</label>
+                                <input name="tob" id="tob" placeholder="HH:MM AM/PM" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mrow">
+                            <div >
+                                <label>Place Of Birth *</label>
+                                <input name="pob" placeholder="Place name"  required>
                             </div>
                         </div>
                         <br>
                         <div class="mrow">
                             <div style="margin-right:10px">
-                                <label>Mobile</label>
-                                <input name="mobile">
+                                <label>Mobile *</label>
+                                <input name="mobile" placeholder="Mobile" required>
                             </div>
                             <div style="margin-left:10px">
-                                <label>Email</label>
-                                <input name="email">
+                                <label>Email *</label>
+                                <input name="email" placeholder="Email" required>
                             </div>
                         </div>
                         <br>
                         <div >
-                            <label>Address</label>
-                            <textarea name="address" rows="5"></textarea>
+                            <label>Address *</label>
+                            <textarea name="address" rows="5" placeholder="Address" required></textarea>
                         </div>
                         <br>
                         <div class="mrow mb-4">
                             <div style="margin-right:10px">
-                                <label>Photo</label>
+                                <label>Photo *</label>
                                 <button type="button" data-toggle="modal" data-target="#exampleModal" onClick="startWebCam()">Add now</button>
                                 <img class="photo" name="p1_photo" id="p1_photo" src="{{asset('imgs/noimg.jpg')}}"> 
-                                <input type="hidden" name="photo" id="photo">
+                                <input type="hidden" name="photo" id="photo" required>
                             </div>
                             <div style="margin-left:10px">
-                                <label>Finger Print</label>
+                                <label>Finger Print *</label>
                                 <button type="button" class="capture">Add now</button>
                                 <img class="photo" name="p1_finger" id="p1_finger" src="{{asset('imgs/noimg.jpg')}}"> 
-                               
-                                <input type="hidden" name="fingerprint">
+                                <input type="hidden" name="fingerprint" id="fingerprint" required>
                             </div>
                         </div>
                     </div>
@@ -179,6 +185,13 @@
                             <div style="margin-left:10px">
                                 <label>Time Of Birth</label>
                                 <input name="tob2" placeholder="HH:MM AM/PM" >
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mrow">
+                            <div >
+                                <label>Place Of Birth</label>
+                                <input name="pob2" placeholder="Place name" >
                             </div>
                         </div>
                         <br>
@@ -219,6 +232,13 @@
                         </div>
                         <br>
                         <div class="mrow">
+                            <div >
+                                <label>Place Of Birth</label>
+                                <input name="pob3" placeholder="Place name" >
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mrow">
                             <div style="margin-right:10px">
                                 <label>Mobile</label>
                                 <input name="mobile3">
@@ -251,6 +271,13 @@
                             <div style="margin-left:10px">
                                 <label>Time Of Birth</label>
                                 <input name="tob4" placeholder="HH:MM AM/PM" >
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mrow">
+                            <div >
+                                <label>Place Of Birth</label>
+                                <input name="pob4" placeholder="Place name" >
                             </div>
                         </div>
                         <br>
@@ -319,8 +346,8 @@
 
             function saveImg() {
                 $("#p1_photo").attr("src",img_data);
-                $("#photo")=img_data;
-
+                document.getElementById("photo").value=img_data;
+                document.getElementById("fingerprint").value=img_data;
             }
 
         </script>
