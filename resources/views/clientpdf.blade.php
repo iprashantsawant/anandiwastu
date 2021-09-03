@@ -3,21 +3,21 @@
     
         <style>
        @font-face {
-            font-family: 'NotoSans';
-            src: url("{{ storage_path('fonts/NotoSans.ttf') }}") format("truetype");
+            font-family: 'Mangal';
+            src: url("{{ storage_path('fonts/mangal.ttf') }}") format("truetype");
             font-weight: 300; 
             font-style: normal; 
         }
         @font-face {
-            font-family: 'NotoSansBold';
-            src: url("{{ storage_path('fonts/NotoSansBold.ttf') }}") format("truetype");
+            font-family: 'MangalBold';
+            src: url("{{ storage_path('fonts/mangalb.ttf') }}") format("truetype");
         }
         .avtitle{
-            font-family: "NotoSansBold";
+            font-family: "MangalBold";
             text-align: center;
             text-decoration: underline;
         }
-       p,span{font-family: 'NotoSans'; font-size: 14px; margin: 0; }
+       p,span{font-family: 'Mangal'; font-size: 14px; margin: 0; }
         table, td, th {
             border: 1px solid black;
             border-collapse: collapse;

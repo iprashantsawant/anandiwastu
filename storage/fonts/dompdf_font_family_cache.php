@@ -79,6 +79,7 @@
   ),
   'mangal' => array(
     'normal' => $fontDir . '/mangal_normal_8ea6ec5a754ac6b7d67197011445b2ec',
+    '300' => $fontDir . '/mangal_300_8ea6ec5a754ac6b7d67197011445b2ec',
   ),
   'notosans' => array(
     'normal' => $fontDir . '/notosans_normal_e5df0ca4f7f0fee88b9ec5536d2abacc',
@@ -90,5 +91,8 @@
   ),
   'notosansbold' => array(
     'normal' => $fontDir . '/notosansbold_normal_7c90516900aaf2af4a78d0dd2332d38f',
+  ),
+  'mangalbold' => array(
+    'normal' => $fontDir . '/mangalbold_normal_1bd9e7752f02340572c0c05279507c76',
   ),
 ) ?>

@@ -100,18 +100,20 @@
         </style>
     </head>
     <body >
-        <div class="header">
-            <div>
-                <img class="logo" src="{{asset('imgs/logo.png')}}"> 
-            </div>
-            <div class='middle'>
-                <h3 >Client Registration Portal<h3>
-            </div>
-            <div style=" margin-left: auto;order: 2;">
-                <img class="logo" src="{{asset('imgs/logo.png')}}"> 
-            </div>
+        <a href="{{url('/')}}">
+            <div class="header">
+                <div>
+                    <img class="logo" src="{{asset('imgs/logo.png')}}"> 
+                </div>
+                <div class='middle'>
+                    <h3 >Client Registration<h3>
+                </div>
+                <div style=" margin-left: auto;order: 2;">
+                    <img class="logo" src="{{asset('imgs/logo.png')}}"> 
+                </div>
 
-        </div>
+            </div>
+        </a>
         <div class="centerFlex">
             <div class="card">
                 <form action="submitClient" method="post" >

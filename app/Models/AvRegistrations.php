@@ -19,7 +19,7 @@ class AvRegistrations extends Model
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="'.url('getPdf/'.$row->id).'" class="edit btn btn-primary btn-sm">View</a>';
+                    $btn = '<a href="'.url('getPdf/'.$row->id).'" target="_blank" class="edit btn btn-primary btn-sm">View</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
