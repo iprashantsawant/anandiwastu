@@ -36,12 +36,19 @@
         .page-break {
             page-break-after: always
         }
+        .avrules{
+            width: 100%;
+        }
+        .avsign{
+            float: right;
+            height: 100px;
+        }
     </style>
 </header>
 
 <body>
     
-    <table style="width:100%;margin-bottom:20px" >
+    <table style="width:100%;margin-bottom:10px" >
             <tr >
             
                 <td style="width:25%;text-align:center"> <img class="logo" src="{{public_path('imgs/logo.png')}}"></td>
@@ -128,8 +135,8 @@
                 </td>
             </tr>
     </table> -->
-    <div class="avtitle">आनंदी वास्तू संस्थेच्या अटी व नियमावली </div>
-    <p>
+    <!-- <div class="avtitle">आनंदी वास्तू संस्थेच्या अटी व नियमावली </div> -->
+    <!-- <p>
         
         <br>१) कोणत्याही व्यक्तीने अपॉइंटमेंट असल्या शिवाय गुरुजींना भेटण्याचा आग्रह करू नये.
         <br>२) वेळोवेळी व्यवस्थापनाकडून नक्की केलेली फी व वस्तूंचे दर यांची आकारणी केली जाते. त्या बाबतीत विश्वासाने सहकार्य करावे.
@@ -162,8 +169,26 @@
         </table>
         <span style="float: right;margin-right:250px">सही:</span> <br><br>
         <span  style="float: right;margin-right:250px"> नाव/पत्ता:</span>
-        </p>
-    
+        </p> -->
+        <img class="avrules" src="{{public_path('imgs/p1.png')}}">
+        <img class="avrules" src="{{public_path('imgs/p2.0.png')}}">
+        <img class="avrules" src="{{public_path('imgs/p2.1.png')}}">
+        <img class="avrules" src="{{public_path('imgs/p2.2.png')}}">
+       
+        <table style="width:100%;border:none" >
+            <tr >
+                <td style="width:50%;text-align:center;border:none"> 
+                    <p>फोटो</p>
+                    <img class="photo" src="{{$data->photo}}">
+                </td>
+                <td style="width:50%;text-align:center;border:none">
+                <p>अंगठा</p> 
+                <img class="photo" src="{{$data->fingerprint}}"></td>
+            </tr>
+        </table>
+        <div class="mrow">
+        <img class="avsign" src="{{public_path('imgs/p3.png')}}">
+        </div>
 </body>
 
 </html>
