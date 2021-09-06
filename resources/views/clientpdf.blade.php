@@ -76,7 +76,7 @@
         </tr>
         <tr>
             <td><b>Date of Birth</b></td>
-            <td>{{is_null($data->dob)?'':$data->dob}}</td>
+            <td>{{is_null($data->dob)?'':\Carbon\Carbon::parse($data->dob)->format('d-m-Y')}}</td>
             <td>{{is_null($data->dob2)?'':$data->dob2}}</td>
             <td>{{is_null($data->dob3)?'':$data->dob3}}</td>
             <td>{{is_null($data->dob4)?'':$data->dob4}}</td>
