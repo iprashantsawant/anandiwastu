@@ -55,8 +55,9 @@
                 <td style="width:25%;text-align:center"> <img class="logo" src="{{public_path('imgs/logo.png')}}"></td>
                 <td style="width:50%;text-align:center">
                                        <b>ANANDI VASTU</b><br>
-                                       <small>“SATYATA” CHANADAN NAGAR, NAGAR ROAD,<br>
-                                       PUNE 14</small>
+                                       <small>Office no 01A, 3rd floor,Downtown city vista, <br>Kolte Patil,
+                                       opp to Victoria kids school, <br>near pir-baba darga, fountain road,<br>
+                                       kharadi, Pune 410014</small>
                 </td>
                 <td style="width:25%;">Doc.No:AV/FO/CRC/01<br>
                                         Ref No.<br>
