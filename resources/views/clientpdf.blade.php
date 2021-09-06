@@ -38,6 +38,7 @@
         }
         .avrules{
             width: 100%;
+            margin: 1px;
         }
         .avsign{
             float: right;
@@ -170,10 +171,10 @@
         <span style="float: right;margin-right:250px">सही:</span> <br><br>
         <span  style="float: right;margin-right:250px"> नाव/पत्ता:</span>
         </p> -->
-        <img class="avrules" src="{{public_path('imgs/p1.png')}}">
-        <img class="avrules" src="{{public_path('imgs/p2.0.png')}}">
-        <img class="avrules" src="{{public_path('imgs/p2.1.png')}}">
-        <img class="avrules" src="{{public_path('imgs/p2.2.png')}}">
+        <img class="avrules" src="{{public_path('imgs/np1.png')}}">
+        <img class="avrules" src="{{public_path('imgs/np2.0.png')}}">
+        <img class="avrules" src="{{public_path('imgs/np2.1.png')}}">
+        <img class="avrules" src="{{public_path('imgs/np3.png')}}">
        
         <table style="width:100%;border:none" >
             <tr >
@@ -186,9 +187,9 @@
                 <img class="photo" src="{{$data->fingerprint}}"></td>
             </tr>
         </table>
-        <div class="mrow">
+        <!-- <div class="mrow">
         <img class="avsign" src="{{public_path('imgs/p3.png')}}">
-        </div>
+        </div> -->
 </body>
 
 </html>
