@@ -182,7 +182,7 @@
                         <div class="mrow">
                             <div style="margin-right:10px">
                                 <label>Date Of Birth</label>
-                                <input name="dob2">
+                                <input name="dob2" type="date" >
                             </div>
                             <div style="margin-left:10px">
                                 <label>Time Of Birth</label>
@@ -268,7 +268,7 @@
                         <div class="mrow">
                             <div style="margin-right:10px">
                                 <label>Date Of Birth</label>
-                                <input name="dob4">
+                                <input name="dob4" type="date">
                             </div>
                             <div style="margin-left:10px">
                                 <label>Time Of Birth</label>
